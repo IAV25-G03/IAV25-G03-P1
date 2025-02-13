@@ -64,6 +64,101 @@ La *FUERZA DE SEGUIMIENTO* es la fuerza con la que atrae el flautista.
 
 Con estas 4 fuerzas, les aplicamos pesos y las sumamos para dar la dirección y velocidad de la rata. En caso de pasarse de la velocidad máxima pondriamos un limitador.
 
+### Pseudocódigo
+
+
+### Comportamiento de las ratas (ratManager)
+```
+void updateRatas(todasRatas, flautista){
+    for (rata in todasRatas):
+        if (flautista)
+
+}
+```
+
+#### Movimiento de las ratas  
+```
+void movimientoRata(rata, todasRatas, distanciaMinima, radioAlineacion, radioCohesion, fuerzaSeguimiento, flautista){
+    Vector3 fuerzaTotal = Vector3(0,0,0)
+
+    if (rata.hipnotizada):
+        fuerzaTotal += separacion(rata, todasRatas, distanciaMinima)
+        fuerzaTotal += alineacion(rata, todasRatas, radioAlineacion)
+        fuerzaTotal += cohesion(rata, todasRatas, radioCohesion)
+        fuerzaTotal += seguimiento(rata, flautista, fuerzaSeguimiento)
+    else:
+        fuerzaTotal = Vector3().randomDirection()
+
+    if (fuerzaTotal > maxVelocidad):
+            fuerzaTotal.normalize()
+            fuerzaTotal = fuerzaTotal * maxVelocidad
+
+    rata.velocity = fuerzaTotal
+}
+
+Vector3 separacion(rata, todasRatas, distanciaMinima){
+    fuerza = Vector3(0,0,0)
+
+    for otro in todasRatas:
+        distancia = rata.distancia_con(otro.pos)
+        if (distancia < distanciaMinima):
+            diferencia = rata.pos - otro.pos
+            diferencia.normalize()
+            fuerza += diferencia / distancia
+
+    return fuerza
+}
+
+Vector3 alineacion(rata, todasRatas, radioAlineacion){
+    fuerza = Vector3(0,0,0)
+    total = 0
+    
+    for (otro in todasRatas):
+        distancia = rata.distancia_con(otro.pos)
+        if (distancia < radioAlineacion):
+            fuerza += rata.velocity
+            total++
+    
+    if (total > 0):
+        fuerza = fuerza / total
+        fuerza.normalize()
+
+    return fuerza
+}
+
+Vector3 cohesion(rata, todasRatas, radioCohesion){
+    fuerza = Vector3(0,0,0)
+    centroMasa = Vector3(0,0,0)
+    total = 0
+    
+    for (otro in todasRatas):
+        distancia = rata.distancia_con(otro.pos)
+        if (distancia < radioCohesion):
+            centroMasa += otro.pos
+            total++
+    
+    if (total > 0):
+        centroMasa = centroMasa / total
+        fuerza = centroMasa - rata.pos
+        fuerza.normalize()
+
+    return fuerza
+}
+
+Vector3 seguimiento(rata, flautista, fuerzaSeguimiento){
+    fuerza = flautista.pos - rata.pos
+    fuerza.normalize()
+
+    return fuerza
+}
+```
+
+#### Movimiento del perro
+
+```
+
+```
+
 ## Ampliaciones
 
 ## Pruebas y métricas
