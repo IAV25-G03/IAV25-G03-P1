@@ -68,6 +68,15 @@ Con estas 4 fuerzas, les aplicamos pesos y las sumamos para dar la dirección y 
 
 ## Pruebas y métricas
 
+- Pruebas:
+    - Probar a poner 1000 ratas en un ordenador de los laboratorios y conseguir que vaya a más de 60FPS durante una ejecución prolongada.
+    - Usar Unity Profiler para poder monitorear procesamiento, consumo de memoria, FPS entre otras cosas.
+- Métricas:
+    - FPS.
+    - Tiempo de actualización de la IA.
+    - Uso de CPU y memoria.
+    - Latencia de respuesta de las IAs.
+
 ## Conclusiones
 
 ## Licencia
