@@ -31,15 +31,33 @@ namespace UCM.IAV.Movimiento
 
         public float fRalentizado;
 
-        public int distancia = 7;
-
         // El tiempo en el que conseguir la aceleracion objetivo
         float timeToTarget = 0.1f;
         public override ComportamientoDireccion GetComportamientoDireccion()
         {
-            // IMPLEMENTAR llegada
-            timeToTarget = 0.1f; //por ejemplo
-            return new ComportamientoDireccion();
+            ComportamientoDireccion ComporDir = new ComportamientoDireccion();
+
+            Vector3 posAgente = agente.transform.position;
+            Vector3 posObjetivo = objetivo.transform.position;
+
+            // Distancia entre los dos agentes
+            float distancia = Vector3.Distance(posAgente, posObjetivo);
+
+            // 3 posibles casos
+            if(distancia < rObjetivo) // El agente ya ha llegado
+            {
+
+            }
+            if(distancia < rRalentizado && distancia > rObjetivo) // El agente está realentizandose
+            {
+                
+            }
+            else // El agente está siguiendo al objetivo
+            {
+
+            }
+
+            return ComporDir;
         }
 
 
