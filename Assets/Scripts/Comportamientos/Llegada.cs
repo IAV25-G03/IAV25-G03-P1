@@ -29,37 +29,39 @@ namespace UCM.IAV.Movimiento
         // El radio en el que se empieza a ralentizarse
         public float rRalentizado;
 
-        public float fRalentizado;
-
         // El tiempo en el que conseguir la aceleracion objetivo
         float timeToTarget = 0.1f;
         public override ComportamientoDireccion GetComportamientoDireccion()
         {
-            ComportamientoDireccion ComporDir = new ComportamientoDireccion();
+            ComportamientoDireccion LastDir = new ComportamientoDireccion();
 
             Vector3 posAgente = agente.transform.position;
             Vector3 posObjetivo = objetivo.transform.position;
 
             // Distancia entre los dos agentes
+            Vector3 direccion = posObjetivo - posAgente;
+            direccion.Normalize();
             float distancia = Vector3.Distance(posAgente, posObjetivo);
 
-            // 3 posibles casos
-            if(distancia < rObjetivo) // El agente ya ha llegado
-            {
+            float velocidad = 0;
 
-            }
-            if(distancia < rRalentizado && distancia > rObjetivo) // El agente está realentizandose
+            // 3 posibles casos
+            if (distancia < rObjetivo) // El agente ya ha llegado
             {
-                
+                // nada
+            }
+            else if (distancia < rRalentizado && distancia > rObjetivo) // El agente está realentizandose
+            {
+                velocidad = agente.velocidadMax;
             }
             else // El agente está siguiendo al objetivo
             {
-
+                velocidad = agente.velocidadMax * (distancia / rRalentizado);
             }
 
-            return ComporDir;
+            LastDir.lineal = direccion * velocidad;
+
+            return LastDir;
         }
-
-
     }
 }

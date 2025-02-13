@@ -3413,6 +3413,9 @@ MonoBehaviour:
   peso: 1
   prioridad: 1
   objetivo: {fileID: 0}
+  rObjetivo: 0
+  rRalentizado: 0
+  fRalentizado: 0
   radioWander: 3
   tiempoMaximo: 2
   tiempoMinimo: 1
@@ -4025,7 +4028,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rata
       objectReference: {fileID: 0}
-<<<<<<< Updated upstream
     - target: {fileID: 6537174158311488314, guid: 5175d5736886518439bf9a2956a122b4,
         type: 3}
       propertyPath: objetivo
@@ -4040,12 +4042,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1628953815}
-=======
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
->>>>>>> Stashed changes
   m_SourcePrefab: {fileID: 100100000, guid: 5175d5736886518439bf9a2956a122b4, type: 3}
 --- !u!4 &479537985934906649
 Transform:
@@ -4813,8 +4809,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
-<<<<<<< Updated upstream
-=======
 --- !u!114 &5866666021018392499
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4833,8 +4827,6 @@ MonoBehaviour:
   rObjetivo: 0
   rRalentizado: 0
   fRalentizado: 0
-  distancia: 7
->>>>>>> Stashed changes
 --- !u!1001 &5977170052653439588
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4912,8 +4904,36 @@ PrefabInstance:
     - {fileID: 0}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3861295050334874256, guid: 5ff744207c6a5044ab297c8fc4814fc0,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5977170052653439590}
   m_SourcePrefab: {fileID: 100100000, guid: 5ff744207c6a5044ab297c8fc4814fc0, type: 3}
+--- !u!1 &5977170052653439589 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3861295050334874256, guid: 5ff744207c6a5044ab297c8fc4814fc0,
+    type: 3}
+  m_PrefabInstance: {fileID: 5977170052653439588}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5977170052653439590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5977170052653439589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fc0c5073ef546042b3ba1dd5b02498a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  peso: 1
+  prioridad: 1
+  objetivo: {fileID: 919132148976998258}
+  rObjetivo: 3
+  rRalentizado: 7
+  fRalentizado: 1
 --- !u!23 &6021100666521978446
 MeshRenderer:
   m_ObjectHideFlags: 0
